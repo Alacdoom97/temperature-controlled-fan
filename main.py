@@ -17,8 +17,8 @@ tempSensor = dht.DHT11(Pin(27, Pin.IN))
 buzzer = PWM(Pin(26))
 
 # Wireless network
-WIFI_SSID = "TeliaGateway30-91-8F-6E-4F-61"
-WIFI_PASS = "0D06E192F6" # No this is not our regular password. :)
+WIFI_SSID = "YOUR_WIFI_SSID"
+WIFI_PASS = "WIFI_PASSWORD" # No this is not our regular password. :)
 
 # Adafruit IO (AIO) configuration
 AIO_SERVER = "io.adafruit.com"
