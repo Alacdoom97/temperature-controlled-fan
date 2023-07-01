@@ -5,8 +5,6 @@ import machine                # Interfaces with hardware components
 from machine import Pin, PWM
 import random                 # Random number generator
 import dht
-from machine import Pin       # Define pin
-
 
 # BEGIN SETTINGS
 # These need to be change to suit your environment
