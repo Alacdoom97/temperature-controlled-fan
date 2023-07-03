@@ -76,15 +76,19 @@ def do_connect():
 
 
 
-# Callback Function to respond to messages from Adafruit IO
+# Callback Function to respond to messages from Home Assistant
 def sub_cb(topic, msg):          # sub_cb means "callback subroutine"
     print((topic, msg))          # Outputs the message that was received. Debugging use.
     if msg == b"ON":             # If message says "ON" but previous message says "OFF"...
+        onNumber = random.randint(50,100)
         led.on()
         playsong(songStart)
+        AIOclient.publish(topic=AIO_FAN_STATUS_FEED, msg=str(onNumber))
     elif msg == b"OFF":          # If message says "OFF" ...
+        offNumber = random.randint(0,49)
         led.off()
         playsong(songStop)
+        AIOclient.publish(topic=AIO_FAN_STATUS_FEED, msg=str(offNumber))
     else:                        # If any other message is received ...
         print("Unknown message") # ... do nothing but output that it happened.
 
