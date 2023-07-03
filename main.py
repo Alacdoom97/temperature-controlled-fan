@@ -20,15 +20,16 @@ WIFI_PASS = "WIFI_PASSWORD" # No this is not our regular password. :)
 
 # Adafruit IO (AIO) configuration
 AIO_SERVER = "io.adafruit.com"
-MQ_SERVER = "192.168.1.237"
+MQ_SERVER = "MOSQUITTO_BROKER"
 MQ_PORT = 3998
 AIO_PORT = 1883
-AIO_USER = "ADAFRUIT_USERNAME"
-AIO_KEY = "ADAFRUIT_KEY"
+AIO_USER = "AIO_USERNAME"
+AIO_KEY = "AIO_Key"
 AIO_CLIENT_ID = ubinascii.hexlify(machine.unique_id())
 MQ_CLIENT_ID = ubinascii.hexlify(machine.unique_id())  # Can be anything
 MQ_BUZZER_TOPIC = "sensors/buzzer"
 AIO_RANDOMS_FEED = "pranav97/feeds/random"
+AIO_FAN_STATUS_FEED = "pranav97/feeds/fan-status"
 AIO_TEMP_FEED = "pranav97/feeds/temperature"
 AIO_HUMIDITY_FEED = "pranav97/feeds/humidity"
 MQ_TEMP_FEED = "sensors/temperature"
