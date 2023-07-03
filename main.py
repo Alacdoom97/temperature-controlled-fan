@@ -1,10 +1,13 @@
 import time                   # Allows use of time.sleep() for delays
+from time import sleep          # Allows use of time.sleep() for delays
 from lib.mqtt import MQTTClient   # For use of MQTT protocol to talk to Adafruit IO
 import ubinascii              # Conversions between binary data and various encodings
 import machine                # Interfaces with hardware components
 from machine import Pin, PWM
 import random                 # Random number generator
 import dht
+import network
+from secrets import wifi_SSID, wifi_password
 
 # BEGIN SETTINGS
 # These need to be change to suit your environment
@@ -13,10 +16,6 @@ last_random_sent_ticks = 0  # milliseconds
 led = Pin("LED", Pin.OUT)   # led pin initialization for Raspberry Pi Pico W
 tempSensor = dht.DHT11(Pin(27, Pin.IN))
 buzzer = PWM(Pin(26))
-
-# Wireless network
-WIFI_SSID = "YOUR_WIFI_SSID"
-WIFI_PASS = "WIFI_PASSWORD" # No this is not our regular password. :)
 
 # Adafruit IO (AIO) configuration
 AIO_SERVER = "io.adafruit.com"
@@ -64,7 +63,7 @@ def do_connect():
         wlan.active(True)                       # Activate network interface
         # set power mode to get WiFi power-saving off (if needed)
         wlan.config(pm = 0xa11140)
-        wlan.connect(WIFI_SSID, WIFI_PASS)  # Your WiFi Credential
+        wlan.connect(wifi_SSID, wifi_password)  # Your WiFi Credential
         print('Waiting for connection...', end='')
         # Check if it is connected otherwise wait
         while not wlan.isconnected() and wlan.status() >= 0:
